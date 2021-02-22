@@ -44,6 +44,14 @@ public class MarketDataInput {
         return rounded / 100d;
     }
 
+    public boolean isUnusual() {
+        return this.ivol > 0.2d && this.oi > 0;
+    }
+
+    public boolean isHighlyUnusual() {
+        return this.size >= 5000 && this.otm && !this.thirdfriday;
+    }
+
     @Override
     public String toString() {
         return "MarketDataInput{" +
@@ -79,6 +87,8 @@ public class MarketDataInput {
           ", notional=" + notional +
           ", oi=" + oi +
           ", otm=" + otm +
+          ", unusual=" + isUnusual() +
+          ", highlyunusual=" + isHighlyUnusual() +
           ", events='" + events + '\'' +
           ", section='" + section + '\'' +
           '}';

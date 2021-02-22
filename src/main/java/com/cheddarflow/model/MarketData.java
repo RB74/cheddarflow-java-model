@@ -45,23 +45,22 @@ public class MarketData implements SymbolSpecific {
     private Boolean otm;
     private String section;
     private String timeZone;
+    private boolean unusual;
+    private boolean highlyUnusual;
 
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
 
     public String getSentiment() { return sentiment; }
-
     public void setSentiment(String sent) { sentiment = sent; }
 
     public int getSize() {
         return size;
     }
-
     public void setSize(int size) {
         this.size = size;
     }
@@ -69,7 +68,6 @@ public class MarketData implements SymbolSpecific {
     public double getPremium() {
         return size * 100 * price;
     }
-
     public String getPremiumString() {
         double p = getPremium();
 
@@ -88,7 +86,6 @@ public class MarketData implements SymbolSpecific {
     public String getSymbol() {
         return symbol;
     }
-
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
@@ -96,11 +93,9 @@ public class MarketData implements SymbolSpecific {
     public Date getExpiry() {
         return expiry;
     }
-
     public void setExpiry(Date expiry) {
         this.expiry = expiry;
     }
-
     public String getExpiryString() {
         if (expiry == null) return null;
         return DateUtils.getInputDateFormat().format(expiry);
@@ -109,7 +104,6 @@ public class MarketData implements SymbolSpecific {
     public double getStrike() {
         return strike;
     }
-
     public void setStrike(double strike) {
         this.strike = strike;
     }
@@ -117,7 +111,6 @@ public class MarketData implements SymbolSpecific {
     public String getType() {
         return type;
     }
-
     public void setType(String type) {
         this.type = type;
     }
@@ -125,23 +118,19 @@ public class MarketData implements SymbolSpecific {
     public double getPrice() {
         return price;
     }
-
     public void setPrice(double price) {
         this.price = price;
     }
-
     public String getPriceString() {
         return "$" + this.getRoundedPrice();
     }
 
     public String getOptionType() { return optionType; }
-
     public void setOptionType(String type) { optionType = type; }
 
     public int getSide() {
         return side;
     }
-
     public void setSide(int side) {
         this.side = side;
     }
@@ -149,7 +138,6 @@ public class MarketData implements SymbolSpecific {
     public String getExch() {
         return exch;
     }
-
     public void setExch(String exch) {
         this.exch = exch;
     }
@@ -157,7 +145,6 @@ public class MarketData implements SymbolSpecific {
     public Date getTimestamp() {
         return timestamp;
     }
-
     public void setTimestamp(Date date) {
         this.timestamp = date;
     }
@@ -165,7 +152,6 @@ public class MarketData implements SymbolSpecific {
     public int getVolume() {
         return volume;
     }
-
     public void setVolume(int volume) {
         this.volume = volume;
     }
@@ -173,19 +159,16 @@ public class MarketData implements SymbolSpecific {
     public String getCondition() {
         return condition;
     }
-
     public void setCondition(String condition) {
         this.condition = condition;
     }
 
     public Boolean getThirdFriday() { return thirdFriday; }
-
     public void setThirdFriday(Boolean thirdFriday) { this.thirdFriday = thirdFriday; }
 
     public double getIvol() {
         return ivol;
     }
-
     public void setIvol(double ivol) {
         this.ivol = ivol;
     }
@@ -193,7 +176,6 @@ public class MarketData implements SymbolSpecific {
     public double getIvolChgPct() {
         return ivolChgPct;
     }
-
     public void setIvolChgPct(double ivolChgPct) {
         this.ivolChgPct = ivolChgPct;
     }
@@ -201,7 +183,6 @@ public class MarketData implements SymbolSpecific {
     public double getIvolChg() {
         return ivolChg;
     }
-
     public void setIvolChg(double ivolChg) {
         this.ivolChg = ivolChg;
     }
@@ -209,7 +190,6 @@ public class MarketData implements SymbolSpecific {
     public double getDelta() {
         return delta;
     }
-
     public void setDelta(double delta) {
         this.delta = delta;
     }
@@ -217,7 +197,6 @@ public class MarketData implements SymbolSpecific {
     public double getDeltaDollar() {
         return deltaDollar;
     }
-
     public void setDeltaDollar(double deltaDollar) {
         this.deltaDollar = deltaDollar;
     }
@@ -225,7 +204,6 @@ public class MarketData implements SymbolSpecific {
     public double getSpot() {
         return spot;
     }
-
     public void setSpot(double spot) {
         this.spot = spot;
     }
@@ -233,7 +211,6 @@ public class MarketData implements SymbolSpecific {
     public double getSpotChg() {
         return spotChg;
     }
-
     public void setSpotChg(double spotChg) {
         this.spotChg = spotChg;
     }
@@ -241,31 +218,26 @@ public class MarketData implements SymbolSpecific {
     public double getClose() {
         return close;
     }
-
     public void setClose(double close) {
         this.close = close;
     }
 
     public double getVega() { return vega; }
-
     public void setVega(double vega) { this.vega = vega; }
 
     public double getVegaDollar() {
         return vegaDollar;
     }
-
     public void setVegaDollar(double vegaDollar) {
         this.vegaDollar = vegaDollar;
     }
 
     public double getTheta() { return theta; }
-
     public void setTheta(double theta) { this.theta = theta; }
 
     public String getEvents() {
         return events;
     }
-
     public void setEvents(String events) {
         this.events = events;
     }
@@ -273,7 +245,6 @@ public class MarketData implements SymbolSpecific {
     public double getBidPrice() {
         return bidPrice;
     }
-
     public void setBidPrice(double bidPrice) {
         this.bidPrice = bidPrice;
     }
@@ -281,7 +252,6 @@ public class MarketData implements SymbolSpecific {
     public double getBidSize() {
         return bidSize;
     }
-
     public void setBidSize(double bidSize) {
         this.bidSize = bidSize;
     }
@@ -289,7 +259,6 @@ public class MarketData implements SymbolSpecific {
     public double getAskPrice() {
         return askPrice;
     }
-
     public void setAskPrice(double askPrice) {
         this.askPrice = askPrice;
     }
@@ -297,7 +266,6 @@ public class MarketData implements SymbolSpecific {
     public double getAskSize() {
         return askSize;
     }
-
     public void setAskSize(double askSize) {
         this.askSize = askSize;
     }
@@ -305,7 +273,6 @@ public class MarketData implements SymbolSpecific {
     public double getNotional() {
         return notional;
     }
-
     public void setNotional(double notional) {
         this.notional = notional;
     }
@@ -313,7 +280,6 @@ public class MarketData implements SymbolSpecific {
     public double getOi() {
         return oi;
     }
-
     public void setOi(double oi) {
         this.oi = (int) oi;
     }
@@ -321,7 +287,6 @@ public class MarketData implements SymbolSpecific {
     public double getNextDayOi() {
         return nextDayOi;
     }
-
     public void setNextDayOi(double nextDayOi) {
         this.nextDayOi = nextDayOi;
     }
@@ -329,7 +294,6 @@ public class MarketData implements SymbolSpecific {
     public double getNextDayOiChg() {
         return nextDayOiChg;
     }
-
     public void setNextDayOiChg(double nextDayOiChg) {
         this.nextDayOiChg = nextDayOiChg;
     }
@@ -337,7 +301,6 @@ public class MarketData implements SymbolSpecific {
     public String getSector() {
         return sector;
     }
-
     public void setSector(String sector) {
         this.sector = sector;
     }
@@ -345,19 +308,16 @@ public class MarketData implements SymbolSpecific {
     public String getSubsector() {
         return subsector;
     }
-
     public void setSubsector(String subsector) {
         this.subsector = subsector;
     }
 
     public Boolean isOutOfMoney() { return otm; }
-
     public void setOutOfMoney(Boolean otm) { this.otm = otm; }
 
     public String getSection() {
         return section;
     }
-
     public void setSection(String section) {
         this.section = section;
     }
@@ -367,6 +327,20 @@ public class MarketData implements SymbolSpecific {
     }
     public void setTimeZone(String timeZone) {
         this.timeZone = timeZone;
+    }
+
+    public boolean isUnusual() {
+        return this.unusual;
+    }
+    public void setUnusual(boolean unusual) {
+        this.unusual = unusual;
+    }
+
+    public boolean isHighlyUnusual() {
+        return this.highlyUnusual;
+    }
+    public void setHighlyUnusual(boolean highlyUnusual) {
+        this.highlyUnusual = highlyUnusual;
     }
 
     public String getDateString() {
@@ -425,6 +399,8 @@ public class MarketData implements SymbolSpecific {
           ", otm=" + otm +
           ", section='" + section + '\'' +
           ", timeZone=" + timeZone +
+          ", unusual=" + unusual +
+          ", highlyunusual=" + highlyUnusual +
           '}';
     }
 }
