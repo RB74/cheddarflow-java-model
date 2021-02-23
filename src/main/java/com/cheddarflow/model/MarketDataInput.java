@@ -45,7 +45,7 @@ public class MarketDataInput {
     }
 
     public boolean isUnusual() {
-        return this.ivol > 0.2d && this.oi > 0;
+        return this.ivol > 0.2d && (this.volume - this.oi * 3) > 0 && (this.oi * 1000 - this.volume) > 0;
     }
 
     public boolean isHighlyUnusual() {
