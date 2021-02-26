@@ -356,6 +356,14 @@ public class MarketData implements SymbolSpecific {
         return rounded / 100d;
     }
 
+    public double getOpening() {
+        return this.size - this.oi;
+    }
+
+    public boolean getOpeningV() {
+        return this.volume > this.oi;
+    }
+
     @Override
     public String toString() {
         return "MarketData{" +
