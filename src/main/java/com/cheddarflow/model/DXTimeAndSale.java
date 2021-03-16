@@ -8,29 +8,32 @@ import com.cheddarflow.util.VolumeFormatter;
 
 import java.util.Date;
 
-public class DXTimeAndSale implements Created {
+public class DXTimeAndSale implements Created, DatasetProvider, SymbolSpecific {
 
-    private final long id;
-    private final String symbol;
-    private final long index;
-    private final Date createdOn;
-    private final Date receivedOn;
-    private final double size;
-    private final String exchangeCode;
-    private final double price;
-    private final double bidPrice;
-    private final double askPrice;
-    private final String exchangeSaleConditions;
-    private final String aggressorSide;
-    private final boolean spreadLeg;
-    private final boolean extendedTradingHours;
-    private final boolean validTick;
-    private final String type;
-    private final boolean lateSignature;
-    private final String tradeThroughExempt;
-    private final Integer signaturePrint;
+    private long id;
+    private String symbol;
+    private long index;
+    private Date createdOn;
+    private Date receivedOn;
+    private double size;
+    private String exchangeCode;
+    private double price;
+    private double bidPrice;
+    private double askPrice;
+    private String exchangeSaleConditions;
+    private String aggressorSide;
+    private boolean spreadLeg;
+    private boolean extendedTradingHours;
+    private boolean validTick;
+    private String type;
+    private boolean lateSignature;
+    private String tradeThroughExempt;
+    private Integer signaturePrint;
 
     private String timeZone;
+
+    public DXTimeAndSale() {
+    }
 
     private DXTimeAndSale(Builder builder) {
         id = builder.id;
@@ -58,6 +61,7 @@ public class DXTimeAndSale implements Created {
         return new Builder();
     }
 
+    @Override
     public String getDataset() {
         return "dark_pool";
     }
@@ -170,6 +174,82 @@ public class DXTimeAndSale implements Created {
 
     public String getTotalShareCostFormatted() {
         return new CostFormatter(true).apply(this.getTotalShareCost(), "$");
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public void setIndex(long index) {
+        this.index = index;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public void setReceivedOn(Date receivedOn) {
+        this.receivedOn = receivedOn;
+    }
+
+    public void setSize(double size) {
+        this.size = size;
+    }
+
+    public void setExchangeCode(String exchangeCode) {
+        this.exchangeCode = exchangeCode;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setBidPrice(double bidPrice) {
+        this.bidPrice = bidPrice;
+    }
+
+    public void setAskPrice(double askPrice) {
+        this.askPrice = askPrice;
+    }
+
+    public void setExchangeSaleConditions(String exchangeSaleConditions) {
+        this.exchangeSaleConditions = exchangeSaleConditions;
+    }
+
+    public void setAggressorSide(String aggressorSide) {
+        this.aggressorSide = aggressorSide;
+    }
+
+    public void setSpreadLeg(boolean spreadLeg) {
+        this.spreadLeg = spreadLeg;
+    }
+
+    public void setExtendedTradingHours(boolean extendedTradingHours) {
+        this.extendedTradingHours = extendedTradingHours;
+    }
+
+    public void setValidTick(boolean validTick) {
+        this.validTick = validTick;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setLateSignature(boolean lateSignature) {
+        this.lateSignature = lateSignature;
+    }
+
+    public void setTradeThroughExempt(String tradeThroughExempt) {
+        this.tradeThroughExempt = tradeThroughExempt;
+    }
+
+    public void setSignaturePrint(Integer signaturePrint) {
+        this.signaturePrint = signaturePrint;
     }
 
     @Override

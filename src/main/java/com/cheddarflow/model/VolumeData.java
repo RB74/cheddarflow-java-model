@@ -4,7 +4,7 @@ import com.cheddarflow.util.DateUtils;
 
 import java.util.Date;
 
-public class VolumeData implements SymbolSpecific {
+public class VolumeData implements SymbolSpecific, DatasetProvider {
     private int id;
     private String symbol;
     private Date date;
@@ -75,6 +75,11 @@ public class VolumeData implements SymbolSpecific {
     private int nom;
     private int pearl;
     private int phlx;
+
+    @Override
+    public String getDataset() {
+        return "volume";
+    }
 
     public int getId() {
         return id;

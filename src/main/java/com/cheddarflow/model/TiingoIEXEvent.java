@@ -2,24 +2,27 @@ package com.cheddarflow.model;
 
 import java.util.Date;
 
-public class TiingoIEXEvent implements Created, SymbolSpecific {
+public class TiingoIEXEvent implements Created, SymbolSpecific, DatasetProvider {
 
-    private final long id;
-    private final String symbol;
-    private final TiingoEventType tiingoEventType;
-    private final Date createdOn;
-    private final Integer bidSize;
-    private final Float bidPrice;
-    private final Float midPrice;
-    private final Float askPrice;
-    private final Integer askSize;
-    private final Float lastPrice;
-    private final Integer lastSize;
-    private final boolean halted;
-    private final boolean afterHours;
-    private final boolean intermarketSweepOrder;
-    private final boolean oddLot;
-    private final boolean subjectToNMSRule611;
+    private long id;
+    private String symbol;
+    private TiingoEventType tiingoEventType;
+    private Date createdOn;
+    private Integer bidSize;
+    private Float bidPrice;
+    private Float midPrice;
+    private Float askPrice;
+    private Integer askSize;
+    private Float lastPrice;
+    private Integer lastSize;
+    private boolean halted;
+    private boolean afterHours;
+    private boolean intermarketSweepOrder;
+    private boolean oddLot;
+    private boolean subjectToNMSRule611;
+
+    public TiingoIEXEvent() {
+    }
 
     private TiingoIEXEvent(TiingoIEXEventBuilder builder) {
         this.bidPrice = builder.bidPrice;
@@ -104,6 +107,75 @@ public class TiingoIEXEvent implements Created, SymbolSpecific {
 
     public boolean isSubjectToNMSRule611() {
         return this.subjectToNMSRule611;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public void setTiingoEventType(TiingoEventType tiingoEventType) {
+        this.tiingoEventType = tiingoEventType;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public void setBidSize(Integer bidSize) {
+        this.bidSize = bidSize;
+    }
+
+    public void setBidPrice(Float bidPrice) {
+        this.bidPrice = bidPrice;
+    }
+
+    public void setMidPrice(Float midPrice) {
+        this.midPrice = midPrice;
+    }
+
+    public void setAskPrice(Float askPrice) {
+        this.askPrice = askPrice;
+    }
+
+    public void setAskSize(Integer askSize) {
+        this.askSize = askSize;
+    }
+
+    public void setLastPrice(Float lastPrice) {
+        this.lastPrice = lastPrice;
+    }
+
+    public void setLastSize(Integer lastSize) {
+        this.lastSize = lastSize;
+    }
+
+    public void setHalted(boolean halted) {
+        this.halted = halted;
+    }
+
+    public void setAfterHours(boolean afterHours) {
+        this.afterHours = afterHours;
+    }
+
+    public void setIntermarketSweepOrder(boolean intermarketSweepOrder) {
+        this.intermarketSweepOrder = intermarketSweepOrder;
+    }
+
+    public void setOddLot(boolean oddLot) {
+        this.oddLot = oddLot;
+    }
+
+    public void setSubjectToNMSRule611(boolean subjectToNMSRule611) {
+        this.subjectToNMSRule611 = subjectToNMSRule611;
+    }
+
+    @Override
+    public String getDataset() {
+        return "iex";
     }
 
     public static TiingoIEXEventBuilder newBuilder() {

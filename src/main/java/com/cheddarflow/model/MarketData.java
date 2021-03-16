@@ -3,8 +3,9 @@ package com.cheddarflow.model;
 import com.cheddarflow.util.DateUtils;
 
 import java.util.Date;
+import java.util.Optional;
 
-public class MarketData implements SymbolSpecific {
+public class MarketData implements SymbolSpecific, HasOptionsContract, DatasetProvider {
     private int id;
     private String sentiment;
     private int size;
@@ -365,6 +366,11 @@ public class MarketData implements SymbolSpecific {
     }
 
     @Override
+    public String getDataset() {
+        return "options";
+    }
+
+    @Override
     public String toString() {
         return "MarketData{" +
           "id=" + id +
@@ -410,5 +416,15 @@ public class MarketData implements SymbolSpecific {
           ", unusual=" + unusual +
           ", highlyunusual=" + highlyUnusual +
           '}';
+    }
+
+    @Override
+    public Optional<OptionsContract> getActiveContract() {
+        return Optional.of(ImmutableOptionsContract.builder()
+          .type(OptionType.forString(this.optionType))
+          .symbol(this.symbol)
+          .strike((float)this.strike)
+          .expiration(this.expiry)
+          .build());
     }
 }
