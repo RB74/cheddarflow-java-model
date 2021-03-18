@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import java.util.Date;
 import java.util.Optional;
 
 import org.immutables.value.Value;
@@ -13,6 +14,7 @@ import org.immutables.value.Value;
 @JsonDeserialize(as = ImmutablePowerAlert.class)
 public interface PowerAlert extends SymbolSpecific, Created, Updated, HasOptionsContract {
 
+    Date getAlertDate();
     @JsonProperty("broken")
     boolean isBroken();
     int getStrength();
