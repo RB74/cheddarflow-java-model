@@ -14,6 +14,7 @@ import org.immutables.value.Value;
 @JsonDeserialize(as = ImmutablePowerAlert.class)
 public interface PowerAlert extends SymbolSpecific, Created, Updated, HasOptionsContract {
 
+    Optional<Long> getId();
     Date getAlertDate();
     @JsonProperty("broken")
     boolean isBroken();
