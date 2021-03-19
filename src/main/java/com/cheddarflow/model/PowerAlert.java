@@ -20,6 +20,7 @@ public interface PowerAlert extends SymbolSpecific, Created, Updated, HasOptions
     boolean isBroken();
     int getStrength();
     Optional<Integer> getStrengthIncrease();
+    float getFirstSpot();
     float getSpot();
     Optional<Float> getFirstVolume();
     Optional<Float> getVolumeDelta();
