@@ -15,6 +15,7 @@ public interface PowerAlertInput extends SymbolSpecific, Created, HasOptionsCont
     boolean isUnusual();
     boolean isHighlyUnusual();
     Optional<Float> getSpot();
+    Optional<Double> getVolume();
     Optional<OptionType> getOptionType();
 
     static PowerAlertInput of(MarketData data) {
@@ -26,6 +27,7 @@ public interface PowerAlertInput extends SymbolSpecific, Created, HasOptionsCont
           .isUnusual(data.isUnusual())
           .isHighlyUnusual(data.isHighlyUnusual())
           .spot((float)data.getSpot())
+          .volume(data.getVolume())
           .optionType(data.getActiveContract().map(OptionsContract::getType))
           .build();
     }
@@ -37,6 +39,7 @@ public interface PowerAlertInput extends SymbolSpecific, Created, HasOptionsCont
           .dataset(data.getDataset())
           .isUnusual(false)
           .isHighlyUnusual(false)
+          .volume(data.getSize())
           .spot(Optional.empty())
           .build();
     }
