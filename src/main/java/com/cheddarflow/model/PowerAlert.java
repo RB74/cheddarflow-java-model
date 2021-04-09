@@ -21,7 +21,6 @@ public interface PowerAlert extends SymbolSpecific, Created, Updated, HasOptions
     int getStrength();
     Optional<Integer> getStrengthIncrease();
     float getFirstSpot();
-    float getSpot();
     Optional<Float> getFirstVolume();
     Optional<Float> getVolumeDelta();
     int getNumCalls();
