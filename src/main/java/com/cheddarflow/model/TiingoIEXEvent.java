@@ -1,6 +1,8 @@
 package com.cheddarflow.model;
 
 import java.util.Date;
+import java.util.Objects;
+import java.util.Optional;
 
 public class TiingoIEXEvent implements Created, SymbolSpecific, DatasetProvider {
 
@@ -20,6 +22,7 @@ public class TiingoIEXEvent implements Created, SymbolSpecific, DatasetProvider 
     private boolean intermarketSweepOrder;
     private boolean oddLot;
     private boolean subjectToNMSRule611;
+    private int hash;
 
     public TiingoIEXEvent() {
     }
@@ -41,6 +44,7 @@ public class TiingoIEXEvent implements Created, SymbolSpecific, DatasetProvider 
         this.createdOn = builder.createdOn;
         this.afterHours = builder.afterHours;
         this.lastPrice = builder.lastPrice;
+        this.hash = builder.hash != null && builder.hash != 0 ? builder.hash : this.hashContent();
     }
 
     public long getId() {
@@ -173,6 +177,21 @@ public class TiingoIEXEvent implements Created, SymbolSpecific, DatasetProvider 
         this.subjectToNMSRule611 = subjectToNMSRule611;
     }
 
+    public int getHash() {
+        return this.hash;
+    }
+    public void setHash(int hash) {
+        this.hash = hash;
+    }
+
+    private int hashContent() {
+        return Objects.hash(this.symbol, this.createdOn, this.afterHours, Optional.ofNullable(this.askPrice).orElse(0f),
+          Optional.ofNullable(this.askSize).orElse(0), Optional.ofNullable(this.bidPrice).orElse(0f),
+          Optional.ofNullable(this.bidSize).orElse(0), Optional.ofNullable(this.midPrice).orElse(0f),
+          Optional.ofNullable(this.lastPrice).orElse(0f), Optional.ofNullable(this.lastSize).orElse(0),
+          this.halted, this.intermarketSweepOrder, this.oddLot, this.subjectToNMSRule611, this.tiingoEventType);
+    }
+
     @Override
     public String getDataset() {
         return "iex";
@@ -200,6 +219,7 @@ public class TiingoIEXEvent implements Created, SymbolSpecific, DatasetProvider 
         private boolean intermarketSweepOrder;
         private boolean oddLot;
         private boolean subjectToNMSRule611;
+        private Integer hash;
 
         private TiingoIEXEventBuilder() {
         }
@@ -281,6 +301,11 @@ public class TiingoIEXEvent implements Created, SymbolSpecific, DatasetProvider 
 
         public TiingoIEXEventBuilder withSubjectToNMSRule611(boolean subjectToNMSRule611) {
             this.subjectToNMSRule611 = subjectToNMSRule611;
+            return this;
+        }
+
+        public TiingoIEXEventBuilder withHash(Integer hash) {
+            this.hash = hash;
             return this;
         }
 
