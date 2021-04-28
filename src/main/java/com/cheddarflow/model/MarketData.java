@@ -5,7 +5,7 @@ import com.cheddarflow.util.DateUtils;
 import java.util.Date;
 import java.util.Optional;
 
-public class MarketData implements SymbolSpecific, HasOptionsContract, DatasetProvider {
+public class MarketData implements SymbolSpecific, DatasetProvider {
     private int id;
     private String sentiment;
     private int size;
@@ -416,15 +416,5 @@ public class MarketData implements SymbolSpecific, HasOptionsContract, DatasetPr
           ", unusual=" + unusual +
           ", highlyunusual=" + highlyUnusual +
           '}';
-    }
-
-    @Override
-    public Optional<OptionsContract> getActiveContract() {
-        return Optional.of(ImmutableOptionsContract.builder()
-          .type(OptionType.forString(this.optionType))
-          .symbol(this.symbol)
-          .strike((float)this.strike)
-          .expiration(this.expiry)
-          .build());
     }
 }

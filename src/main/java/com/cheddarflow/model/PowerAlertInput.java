@@ -10,7 +10,7 @@ import org.immutables.value.Value;
 @Value.Immutable
 @JsonSerialize(as = ImmutablePowerAlertInput.class)
 @JsonDeserialize(as = ImmutablePowerAlertInput.class)
-public interface PowerAlertInput extends SymbolSpecific, Created, HasOptionsContract, DatasetProvider {
+public interface PowerAlertInput extends SymbolSpecific, Created, DatasetProvider {
 
     boolean isUnusual();
     boolean isHighlyUnusual();
@@ -22,13 +22,12 @@ public interface PowerAlertInput extends SymbolSpecific, Created, HasOptionsCont
         return ImmutablePowerAlertInput.builder()
           .symbol(data.getSymbol())
           .createdOn(data.getTimestamp())
-          .activeContract(data.getActiveContract())
           .dataset(data.getDataset())
           .isUnusual(data.isUnusual())
           .isHighlyUnusual(data.isHighlyUnusual())
           .spot((float)data.getSpot())
           .volume(data.getVolume())
-          .optionType(data.getActiveContract().map(OptionsContract::getType))
+          .optionType(OptionType.forString(data.getOptionType()))
           .build();
     }
 

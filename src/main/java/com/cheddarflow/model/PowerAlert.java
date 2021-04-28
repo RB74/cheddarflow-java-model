@@ -12,7 +12,7 @@ import org.immutables.value.Value;
 @Value.Immutable
 @JsonSerialize(as = ImmutablePowerAlert.class)
 @JsonDeserialize(as = ImmutablePowerAlert.class)
-public interface PowerAlert extends SymbolSpecific, Created, Updated, HasOptionsContract {
+public interface PowerAlert extends SymbolSpecific, Created, Updated {
 
     Optional<Long> getId();
     Date getAlertDate();
