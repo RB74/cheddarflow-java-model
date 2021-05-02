@@ -16,6 +16,7 @@ public interface PowerAlertInput extends SymbolSpecific, Created, DatasetProvide
     boolean isHighlyUnusual();
     Optional<Float> getSpot();
     Optional<Double> getVolume();
+    Optional<Double> getImpliedVolatility();
     Optional<OptionType> getOptionType();
 
     static PowerAlertInput of(MarketData data) {
@@ -27,6 +28,7 @@ public interface PowerAlertInput extends SymbolSpecific, Created, DatasetProvide
           .isHighlyUnusual(data.isHighlyUnusual())
           .spot((float)data.getSpot())
           .volume(data.getVolume())
+          .impliedVolatility(data.getIvol())
           .optionType(OptionType.forString(data.getOptionType()))
           .build();
     }

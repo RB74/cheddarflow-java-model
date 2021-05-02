@@ -24,6 +24,7 @@ public interface PowerAlert extends SymbolSpecific, Created, Updated {
     Optional<Float> getFirstVolume();
     Optional<Float> getVolumeDelta();
     int getNumCalls();
+    Optional<Integer> getNumImpliedVolatilityMatches();
     Optional<Integer> getNumUnusual();
     Optional<Integer> getNumHighlyUnusual();
     Optional<Integer> getNumDarkPool();
