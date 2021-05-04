@@ -18,8 +18,7 @@ public interface PowerAlert extends SymbolSpecific, Created, Updated {
     Date getAlertDate();
     @JsonProperty("broken")
     boolean isBroken();
-    int getStrength();
-    Optional<Integer> getStrengthIncrease();
+    int getStrength(); //not persisted
     float getFirstSpot();
     Optional<Float> getFirstVolume();
     Optional<Float> getVolumeDelta();
