@@ -24,6 +24,26 @@ public class HolidayWindow {
         return new Builder();
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Date getYear() {
+        return year;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
     public static final class Builder {
         private long id;
         private String name;
