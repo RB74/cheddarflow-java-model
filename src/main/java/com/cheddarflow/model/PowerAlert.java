@@ -51,19 +51,25 @@ public interface PowerAlert extends SymbolSpecific, Created, Updated {
         final int numDarkPool = this.getNumDarkPool().orElse(0);
         final int numIvol = this.getNumImpliedVolatilityMatches().orElse(0);
         if (numCalls > 2 || numHighlyUnusual > 0 || numUnusual > 2) {
-            if (numIvol == numCalls) {
-                if ((numCalls > 9 && numDarkPool > 3) || (numCalls > 7 && numHighlyUnusual > 0)) {
+            int a = numCalls;
+            int b = numIvol;
+            if (a > 2 && b > 2) {
+                a = Math.min(a, b);
+                b = a;
+            }
+            if (a == b) {
+                if ((a > 9 && numDarkPool > 3) || (a > 7 && numHighlyUnusual > 0)) {
                     return 9; //was 100 %
-                } else if (numCalls > 6 && numDarkPool > 1) {
+                } else if (a > 6 && numDarkPool > 1) {
                     return 7; //was 85 %
-                } else if (numCalls > 6) {
+                } else if (a > 6) {
                     return 6; //was 75 %
-                } else if (numCalls > 4 && numUnusual > 0) {
+                } else if (a > 4 && numUnusual > 0) {
                     return 3; //was 45 %
-                } else if (numCalls > 2) {
+                } else if (a > 2) {
                     return 2; //was 35 %
                 }
-            } else if (numCalls > 2) {
+            } else if (a > 2) {
                 return 1; // pure flow > 2 calls not broken
             }
         }
