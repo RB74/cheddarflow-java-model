@@ -6,6 +6,7 @@ public class Login {
     private String token;
     private String refreshToken;
     private String idToken;
+    private String pnAuthKey; //PubNub client authKey - use with PubNub Access Manager channel grants
     private int expiresIn;
 
     public String getToken() {
@@ -41,5 +42,14 @@ public class Login {
 
     public void setExpiresIn(int expiresIn) {
         this.expiresIn = expiresIn;
+    }
+
+    @JsonProperty("pn_auth_key")
+    public String getPnAuthKey() {
+        return this.pnAuthKey;
+    }
+
+    public void setPnAuthKey(String pnAuthKey) {
+        this.pnAuthKey = pnAuthKey;
     }
 }
