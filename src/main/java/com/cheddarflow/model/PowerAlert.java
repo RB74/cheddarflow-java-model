@@ -64,7 +64,7 @@ public interface PowerAlert extends SymbolSpecific, Created, Updated {
                     return 7; //was 85 %
                 } else if (a > 6) {
                     return 6; //was 75 %
-                } else if (a > 4 && numUnusual > 0) {
+                } else if (a > 4) {
                     return 3; //was 45 %
                 } else if (a > 2) {
                     return 2; //was 35 %
