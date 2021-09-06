@@ -242,7 +242,7 @@
 
     <repositories>
         <repository>
-            <id>maven-group</id>
+            <id>cheddarflow-maven-public</id>
             <url>https://maven.cheddarflow.com/repository/maven-public/</url>
             <releases>
                 <enabled>true</enabled>
