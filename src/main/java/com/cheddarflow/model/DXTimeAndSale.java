@@ -18,12 +18,12 @@ public class DXTimeAndSale implements Created, DatasetProvider, SymbolSpecific {
     private double size;
     private String exchangeCode;
     private double price;
-    private double bidPrice;
-    private double askPrice;
+    private Double bidPrice;
+    private Double askPrice;
     private String exchangeSaleConditions;
     private String aggressorSide;
     private boolean spreadLeg;
-    private boolean extendedTradingHours;
+    private Boolean extendedTradingHours;
     private boolean validTick;
     private String type;
     private boolean lateSignature;
@@ -59,6 +59,15 @@ public class DXTimeAndSale implements Created, DatasetProvider, SymbolSpecific {
 
     public static Builder newBuilder() {
         return new Builder();
+    }
+
+    public void setForFE(){
+        exchangeCode = null;
+        bidPrice = null;
+        askPrice = null;
+        exchangeSaleConditions = null;
+        aggressorSide = null;
+        extendedTradingHours = null;
     }
 
     @Override
