@@ -12,9 +12,8 @@ public class DXTimeAndSaleDto implements Created {
 	private String timeString;
 	private String volumeFormatted;
 	private boolean lateSignature;
-	private Double shareCost;
 	private Double price;
-	private Double totalShareCostFormatted;
+	private String totalShareCostFormatted;
 	private String exchangeSaleConditions;
 	private Date createdAt;
 	private Date receivedOn;
@@ -26,8 +25,7 @@ public class DXTimeAndSaleDto implements Created {
 		this.dateString = dXTimeAndSale.getDateString();
 		this.timeString = dXTimeAndSale.getTimeString();
 		this.volumeFormatted = dXTimeAndSale.getVolumeFormatted();
-		this.shareCost = dXTimeAndSale.getTotalShareCost();
-		this.totalShareCostFormatted = dXTimeAndSale.getTotalShareCost();
+		this.totalShareCostFormatted = dXTimeAndSale.getTotalShareCostFormatted();
 		this.exchangeSaleConditions = dXTimeAndSale.getExchangeSaleConditions();
 		this.lateSignature = dXTimeAndSale.isLateSignature();
 		this.createdAt = dXTimeAndSale.getCreatedOn();
@@ -58,15 +56,11 @@ public class DXTimeAndSaleDto implements Created {
 		return lateSignature;
 	}
 
-	public Double getShareCost() {
-		return shareCost;
-	}
-
 	public Double getPrice() {
 		return price;
 	}
 
-	public Double getTotalShareCostFormatted() {
+	public String getTotalShareCostFormatted() {
 		return totalShareCostFormatted;
 	}
 
