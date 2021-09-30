@@ -12,6 +12,8 @@ public class DXTimeAndSaleDto implements Created {
 	private String timeString;
 	private String volumeFormatted;
 	private boolean lateSignature;
+	private Integer signaturePrint;
+	private Double shareCost;
 	private Double price;
 	private String totalShareCostFormatted;
 	private String exchangeSaleConditions;
@@ -25,9 +27,11 @@ public class DXTimeAndSaleDto implements Created {
 		this.dateString = dXTimeAndSale.getDateString();
 		this.timeString = dXTimeAndSale.getTimeString();
 		this.volumeFormatted = dXTimeAndSale.getVolumeFormatted();
+		this.shareCost = dXTimeAndSale.getTotalShareCost();
 		this.totalShareCostFormatted = dXTimeAndSale.getTotalShareCostFormatted();
 		this.exchangeSaleConditions = dXTimeAndSale.getExchangeSaleConditions();
 		this.lateSignature = dXTimeAndSale.isLateSignature();
+		this.signaturePrint = dXTimeAndSale.getSignaturePrint();
 		this.createdAt = dXTimeAndSale.getCreatedOn();
 		this.receivedOn = dXTimeAndSale.getReceivedOn();
 	}
@@ -54,6 +58,14 @@ public class DXTimeAndSaleDto implements Created {
 
 	public boolean isLateSignature() {
 		return lateSignature;
+	}
+
+	public Integer getSignaturePrint() {
+		return signaturePrint;
+	}
+
+	public Double getShareCost() {
+		return shareCost;
 	}
 
 	public Double getPrice() {
